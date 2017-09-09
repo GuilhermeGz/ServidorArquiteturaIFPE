@@ -18,19 +18,25 @@ public class Servidor {
     public static void main(String[] args) throws IOException {
         ServerSocket servidor = new ServerSocket(32154);
         System.out.println("Porta 32154 aberta!");
+        while (true) {
 
-        Socket cliente = servidor.accept();
-        System.out.println("Nova conexão com o cliente "
-                + cliente.getInetAddress().getHostAddress()
-        );
+            Socket cliente = servidor.accept();
+            System.out.println("Nova conexão com o cliente "
+                    + cliente.getInetAddress().getHostAddress());
 
-        Scanner s = new Scanner(cliente.getInputStream());
-        while (s.hasNextLine()) {
-            System.out.println(s.nextLine());
+            Scanner s = new Scanner(cliente.getInputStream());
+            while (s.hasNextLine()) {
+                String escrita = s.nextLine();
+                if (escrita.equals("sair")) {
+                    break;
+                }
+                System.out.println(escrita);
+            }
+
+            s.close();
+            servidor.close();
+            cliente.close();
         }
-
-        s.close();
-        servidor.close();
-        cliente.close();
     }
+
 }
