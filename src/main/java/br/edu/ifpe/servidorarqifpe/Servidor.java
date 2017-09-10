@@ -3,9 +3,6 @@ package br.edu.ifpe.servidorarqifpe;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.*;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 /**
